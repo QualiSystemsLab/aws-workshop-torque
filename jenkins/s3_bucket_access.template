@@ -7,10 +7,10 @@
 		}
 	},
 	"Resources": {
-		"S3ColonyJenkinsPolicy": {
+		"S3TorqueJenkinsPolicy": {
 			"Type": "AWS::IAM::Policy",
 			"Properties": {
-				"PolicyName": "CloudShellColony_Jenkins_S3Access",
+				"PolicyName": "Torque_Jenkins_S3Access",
 				"PolicyDocument": {
 					"Version": "2012-10-17",
 					"Statement": [{
@@ -40,11 +40,11 @@
 					}]
 				},
 				"Roles": [{
-					"Ref": "ColonyJenkinsRole"
+					"Ref": "TorqueJenkinsRole"
 				}]
 			}
 		},
-		"ColonyJenkinsRole": {
+		"TorqueJenkinsRole": {
 			"Type": "AWS::IAM::Role",
 			"Properties": {
 				"AssumeRolePolicyDocument": {
@@ -60,12 +60,12 @@
 				"Path": "/"
 			}
 		},
-		"ColonyJenkinsInstance2Profile": {
+		"TorqueJenkinsInstance2Profile": {
 			"Type": "AWS::IAM::InstanceProfile",
 			"Properties": {
 				"Path": "/",
 				"Roles": [{
-					"Ref": "ColonyJenkinsRole"
+					"Ref": "TorqueJenkinsRole"
 				}]
 			}
 		}
@@ -73,8 +73,7 @@
 	"Outputs": {
 		"IAMRoleInstanceProfile": {
 			"Description": "IAM Role Instance Profile name",
-			"Value": { "Ref": "ColonyJenkinsInstance2Profile" }
+			"Value": { "Ref": "TorqueJenkinsInstance2Profile" }
 		}
 	}
 }
-  
