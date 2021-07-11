@@ -56,7 +56,7 @@ resource "aws_security_group" "docdb_sg" {
 }
 
 resource "aws_docdb_cluster_parameter_group" "no_tls" {
-  family      = "docdb3.6"
+  family      = "docdb4.0"
   name        = "param-group-${var.SANDBOX_ID}"
   description = "colony sandbox docdb cluster parameter group without tls"
 
