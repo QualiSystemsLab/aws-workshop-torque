@@ -10,7 +10,7 @@ inputs:
   - SANDBOX_ID
 
 module:
-  source: git::https://github.com/QualiSystemsLab/aws-workshop-colony.git//terraform/aws-document-db
+  source: git::https://github.com/QualiSystemsLab/aws-workshop-torque.git//terraform/aws-document-db
 
 terraform_version: 0.11.11
 
