@@ -11,6 +11,7 @@ DATA="$6"
 echo 'Install MongoDB'
 #apt-get update -y && apt-get install gnupg
 apt-get install -y gnupg
+apt-get install -y libcurl3
 wget -qO - https://www.mongodb.org/static/pgp/server-4.0.asc | apt-key add -
 
 #wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | apt-key add -
