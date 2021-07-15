@@ -54,6 +54,7 @@ do
 done
 
 # load data to mongodb endpoint
+echo "$DATA"
 echo "$DATA" | mongoimport -h=$ENDPOINT -u=$USER -p=$PASSWORD -d=$DB -c=$COLLECTION --jsonArray
 
 retVal=$?
