@@ -23,7 +23,7 @@ variables:
     - INSERT_DATA: $ADD_ADMIN_USER
     - DB_NAME: promo-manager
     - COLLECTION_NAME: users
-    - DATA: "[{'email':'admin','password':'admin'}]"
+    - DATA: "[{"email":"admin","password":"admin"}]"
 
 outputs:
     - connection_string
