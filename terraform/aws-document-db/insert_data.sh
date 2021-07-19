@@ -5,7 +5,7 @@ USER="$2"
 PASSWORD="$3"
 DB="$4"
 COLLECTION="$5"
-DATA=$6
+DATA="$6"
 
 # install mongoimport cli tool
 echo 'Install MongoDB'
