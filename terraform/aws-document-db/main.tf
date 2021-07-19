@@ -15,7 +15,7 @@ data "aws_vpc" "sandbox_vpc" {
 data "aws_subnet" "sandbox_app_subnet_0" {
     vpc_id = "${data.aws_vpc.sandbox_vpc.id}"
 
-    filter = {
+    filter {
         name = "tag:Name"
         values = ["app-subnet-0"]
     }
@@ -23,7 +23,7 @@ data "aws_subnet" "sandbox_app_subnet_0" {
 data "aws_subnet" "sandbox_app_subnet_1" {
     vpc_id = "${data.aws_vpc.sandbox_vpc.id}"
 
-    filter = {
+    filter {
         name = "tag:Name"
         values = ["app-subnet-1"]
     }
