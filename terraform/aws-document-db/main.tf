@@ -5,7 +5,7 @@ provider "aws" {
 
 # Get VPC by sandbox id
 data "aws_vpc" "sandbox_vpc" {
-    filter = {
+    filter {
         name = "tag:colony-sandbox-id"
         values = ["${var.SANDBOX_ID}"]
     }    
