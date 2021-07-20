@@ -100,7 +100,7 @@ resource "aws_docdb_cluster" "default" {
 }
 
 locals {
-    DATA = "[{\"email\":\"admin\",\"password\":\"admin\"}]"
+    DATA = [{"email":"admin","password":"admin"}]
 }
 
 resource "null_resource" "insert_data" {
