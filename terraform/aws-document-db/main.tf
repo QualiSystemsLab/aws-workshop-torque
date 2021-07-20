@@ -100,7 +100,7 @@ resource "aws_docdb_cluster" "default" {
 }
 
 resource "local_file" "data" {
-    content     = "[{"email":"admin","password":"admin"}]"
+    content     = "[{\"email\":\"admin\",\"password\":\"admin\"}]"
     filename    = "data.json"
 }
 
