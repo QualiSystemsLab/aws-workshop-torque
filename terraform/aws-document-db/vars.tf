@@ -17,6 +17,3 @@ variable "DB_NAME" {
 variable "COLLECTION_NAME" {
     default = ""
 }
-variable "DATA" {
-    default = ""
-}
