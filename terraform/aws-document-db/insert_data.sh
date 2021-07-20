@@ -5,7 +5,6 @@ USER="$2"
 PASSWORD="$3"
 DB="$4"
 COLLECTION="$5"
-DATA="$6"
 
 # install mongoimport cli tool
 echo 'Install MongoDB'
@@ -54,10 +53,7 @@ do
 done
 
 # load data to mongodb endpoint
-#echo "$DATA"
-#echo "$DATA" | mongoimport -h=$ENDPOINT -u=$USER -p=$PASSWORD -d=$DB -c=$COLLECTION --jsonArray
 mongoimport -h=$ENDPOINT -u=$USER -p=$PASSWORD -d=$DB -c=$COLLECTION --jsonArray --file data.json
-
 
 retVal=$?
 if [ $retVal -ne 0 ]; then
