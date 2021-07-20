@@ -54,8 +54,10 @@ do
 done
 
 # load data to mongodb endpoint
-echo "$DATA"
-echo "$DATA" | mongoimport -h=$ENDPOINT -u=$USER -p=$PASSWORD -d=$DB -c=$COLLECTION --jsonArray
+#echo "$DATA"
+#echo "$DATA" | mongoimport -h=$ENDPOINT -u=$USER -p=$PASSWORD -d=$DB -c=$COLLECTION --jsonArray
+mongoimport -h=$ENDPOINT -u=$USER -p=$PASSWORD -d=$DB -c=$COLLECTION --jsonArray --file data.json
+
 
 retVal=$?
 if [ $retVal -ne 0 ]; then
