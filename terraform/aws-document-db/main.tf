@@ -6,7 +6,7 @@ provider "aws" {
 # Get VPC by sandbox id
 data "aws_vpc" "sandbox_vpc" {
     filter {
-        name = "tag:colony-sandbox-id"
+        name = "tag:toque-sandbox-id"
         values = ["${var.SANDBOX_ID}"]
     }    
 }
@@ -51,14 +51,14 @@ resource "aws_security_group" "docdb_sg" {
 
   tags = {
     Name = "docdb_allow_sandbox_traffic"
-    colony-sandbox-id = "${var.SANDBOX_ID}"
+    torque-sandbox-id = "${var.SANDBOX_ID}"
   }
 }
 
 resource "aws_docdb_cluster_parameter_group" "no_tls" {
   family      = "docdb4.0"
   name        = "param-group-${var.SANDBOX_ID}"
-  description = "colony sandbox docdb cluster parameter group without tls"
+  description = "torque sandbox docdb cluster parameter group without tls"
 
   parameter {
     name  = "tls"
@@ -71,23 +71,23 @@ resource "aws_docdb_subnet_group" "default" {
   subnet_ids = ["${data.aws_subnet.sandbox_app_subnet_0.id}", "${data.aws_subnet.sandbox_app_subnet_1.id}"]
 
   tags = {
-    Name = "colony document db sugnet group"
-    colony-sandbox-id = "${var.SANDBOX_ID}"
+    Name = "torque document db sugnet group"
+    torque-sandbox-id = "${var.SANDBOX_ID}"
   }
 }
 
 resource "aws_docdb_cluster_instance" "cluster_instances" {
     count              = 1
-    identifier         = "colony-sandbox-docdb-${var.SANDBOX_ID}"
+    identifier         = "torque-sandbox-docdb-${var.SANDBOX_ID}"
     cluster_identifier = "${aws_docdb_cluster.default.id}"
     instance_class     = "db.r5.large"
     tags = {
-        colony-sandbox-id = "${var.SANDBOX_ID}"
+        torque-sandbox-id = "${var.SANDBOX_ID}"
     }
 }
 
 resource "aws_docdb_cluster" "default" {
-    cluster_identifier    = "colony-sandbox-docdb-cluster-${var.SANDBOX_ID}"
+    cluster_identifier    = "torque-sandbox-docdb-cluster-${var.SANDBOX_ID}"
     master_username       = "${var.USERNAME}"
     master_password       = "${var.PASSWORD}"
     db_subnet_group_name  = "${aws_docdb_subnet_group.default.id}"
@@ -95,7 +95,7 @@ resource "aws_docdb_cluster" "default" {
     vpc_security_group_ids = ["${aws_security_group.docdb_sg.id}"]
     db_cluster_parameter_group_name = "${aws_docdb_cluster_parameter_group.no_tls.id}"
     tags = {
-        colony-sandbox-id   = "${var.SANDBOX_ID}"
+        torque-sandbox-id   = "${var.SANDBOX_ID}"
     }
 }
 
