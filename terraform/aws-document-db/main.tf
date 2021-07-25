@@ -6,7 +6,7 @@ provider "aws" {
 # Get VPC by sandbox id
 data "aws_vpc" "sandbox_vpc" {
     filter {
-        name = "tag:toque-sandbox-id"
+        name = "tag:torque-sandbox-id"
         values = ["${var.SANDBOX_ID}"]
     }    
 }
