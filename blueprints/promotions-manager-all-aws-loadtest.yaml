@@ -22,7 +22,7 @@ inputs:
 applications:
   - promotions-manager-ui:
       target: vm1
-      #instances: 3
+      instances: 3
       input_values:
         - PORT: $PORT
         - AWS_INSTANCE_TYPE: $AWS_INSTANCE_TYPE
