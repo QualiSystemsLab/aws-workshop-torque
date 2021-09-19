@@ -1,0 +1,73 @@
+#
+#   This application file defines how to deploy and
+#   configure a Wordpress application
+#
+---
+spec_version: 1
+kind: application
+
+# These inputs are used by the initialization script to
+# configure the connectivity to the database
+# In the script we update the connectivity details which
+# are located in /var/www/html/wp-config.php
+inputs:
+  - DB_USER
+  - DB_PASS
+  - DB_NAME
+  - DB_HOSTNAME
+infrastructure:
+  # Specify the compute requirement for this app
+  # if we don't specify anything the default will be used
+  compute:
+    spec:
+      aws:
+        instance_type: t2.medium
+      azure:
+        vm_size: Basic_A2
+
+  # Port 80 will be opened externally to receive web requests
+  connectivity:
+    external:
+      - port_info:
+          port: 80
+          ingress-healthcheck:
+            healthy-threshold: 5
+            interval: 30
+            path: /wp-includes/images/blank.gif
+            status-codes: 200-299
+            timeout: 5
+            unhealthy-threshold: 2
+
+# This is a clean Ubuntu server image that will be
+# used to create a new EC2 instance in the defined AWS region
+source:
+  os_type: linux
+  image:
+    ami:
+      - id: ami-03ef731cc103c9f09
+        region: eu-west-1
+        username: ubuntu
+    azure_image:
+      - urn: Canonical:UbuntuServer:16.04-LTS:latest
+        username: adminuser
+    docker_image:
+      - tag: 16.04
+        name: ubuntu
+
+configuration:
+  # The initialization script is intended to install
+  # app prerequisite and initialize the OS
+  # This script installs wordpress on a clean Ubuntu OS.
+  initialization:
+    script: wordpress.sh
+  # This command restarts the Apache server after the initialization completes
+  start:
+    command: >
+      systemctl restart apache2.service
+  # To validate the installation, we wait to see that the ports are available
+  healthcheck:
+    wait_for_ports: ALL
+    timeout: 1500
+
+debugging:
+  connection_protocol: SSH

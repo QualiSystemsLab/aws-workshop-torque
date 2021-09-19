@@ -1,1 +1,0 @@
-print("sample command test")
