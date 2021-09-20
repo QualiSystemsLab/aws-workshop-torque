@@ -6,7 +6,7 @@ metadata:
   description: LAMP WordPress stack (Linux, Apache, MySQL, PHP)
 
 clouds:
-  - AWS: ap-south-1
+  - AWS: us-east-1
 
 # These are the blueprint parameters and their default values.
 # The values can be changed when creating a sandbox based on this
