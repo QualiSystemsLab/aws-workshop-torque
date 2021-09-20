@@ -33,7 +33,7 @@ applications:
         - DB_USER: $DB_USER
         - DB_PASS: $DB_PASS
         - DB_NAME: $DB_NAME
-        #- DB_HOSTNAME: $colony.applications.mysql.dns
+        - DB_HOSTNAME: $colony.applications.mysql.sh
       # The wodpress site depends on MySQL and will start deploying
       # only when the database is ready
       depends_on:
