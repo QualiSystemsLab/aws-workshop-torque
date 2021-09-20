@@ -34,7 +34,7 @@ source:
     - name: ubuntu
       tag: 18.04
     ami:
-      - id: ami-0c1a7f89451184c8b
+      - id: ami-09e67e426f25ce0d7
         region: us-east-1
         username: ubuntu
   os_type: linux
