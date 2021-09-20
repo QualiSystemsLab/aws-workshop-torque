@@ -25,7 +25,7 @@ configuration:
   initialization:
     script: sample-api.sh
   healthcheck:
-    #script: health-check.sh
+    script: health-check.sh
     timeout: 240
 
 source:
