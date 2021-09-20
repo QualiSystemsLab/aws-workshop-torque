@@ -36,7 +36,7 @@ source:
     # AWS region
     ami:
       - id: ami-03ef731cc103c9f09
-        region: ap-south-1
+        region: us-east-1
         username: ubuntu
     azure_image:
       - urn: Canonical:UbuntuServer:16.04-LTS:latest
