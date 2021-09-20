@@ -67,10 +67,3 @@ echo 'RELEASE_NUMBER='$RELEASE_NUMBER >> /etc/environment
 echo 'API_BUILD_NUMBER='$API_BUILD_NUMBER >> /etc/environment
 echo 'API_PORT='$API_PORT >> /etc/environment
 source /etc/environment
-
-
-
-# deploy the application as the ROOT web application
-cp sample_java_spring_source/artifacts/colony-java-spring-sample-1.0.0-BUILD-SNAPSHOT.war /var/lib/tomcat8/webapps/ROOT.war
-
-systemctl start tomcat8
