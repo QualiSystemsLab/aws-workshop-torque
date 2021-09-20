@@ -1,0 +1,44 @@
+spec_version: 1
+kind: application
+inputs:
+- API_PORT: 3001
+- AZURE_VM_SIZE: Basic_A1
+- AWS_INSTANCE_TYPE: t2.micro
+- RELEASE_NUMBER: none
+- API_BUILD_NUMBER: none
+
+infrastructure:
+  connectivity:
+    external:
+      - port_info:
+          port: $API_PORT
+  compute:
+    spec:      
+      azure:
+        vm_size: $AZURE_VM_SIZE
+      aws:
+        instance_type: $AWS_INSTANCE_TYPE
+        
+configuration:
+  start:
+    script: sample-api-command.sh
+  initialization:
+    script: sample-api.sh
+  healthcheck:
+    #script: health-check.sh
+    timeout: 240
+
+source:
+  image:
+    docker_image:
+    - name: ubuntu
+      tag: 18.04
+    ami:
+      - id: ami-0c1a7f89451184c8b
+        region: ap-south-1
+        username: ubuntu
+  os_type: linux
+
+debugging: 
+  connection_protocol: SSH
+ 
