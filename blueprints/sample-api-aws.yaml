@@ -8,7 +8,7 @@ clouds:
   - AWS: us-east-1
   
 artifacts:
-  - sample-api: artifacts/sample-api/sample-api.tar.gz
+  - sample-api: artifacts/sample-api/sample-api.exe
 
 inputs:
 - PORT: 3000
