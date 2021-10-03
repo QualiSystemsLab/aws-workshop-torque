@@ -8,7 +8,8 @@ clouds:
   - AWS: us-east-1
   
 artifacts:
-  - sample-api: artifacts/sample-api/sample-api.exe
+  - sample-project-ui: artifacts/sample-api/sample-project-0.0.1.tar.gz
+  - sample-project-api: artifacts/sample-api/sample-project-0.0.1-py3-none-any.whl
 
 inputs:
 - PORT: 3000
