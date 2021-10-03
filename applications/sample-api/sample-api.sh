@@ -61,7 +61,7 @@ echo "****************************************************************"
 mkdir $ARTIFACTS_PATH/drop
 tar -xvf $ARTIFACTS_PATH/sample-api.tar.gz -C $ARTIFACTS_PATH/drop/
 mkdir /var/www/sample-api/
-tar -xvf $ARTIFACTS_PATH/drop/drop/sample-api.tar.gz -C /var/www/sample-api
+tar -xvf $ARTIFACTS_PATH/drop/drop/sample-*.tar.gz -C /var/www/sample-api
 
 echo 'RELEASE_NUMBER='$RELEASE_NUMBER >> /etc/environment
 echo 'API_BUILD_NUMBER='$API_BUILD_NUMBER >> /etc/environment
