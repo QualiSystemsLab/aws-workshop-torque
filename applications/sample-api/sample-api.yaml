@@ -7,7 +7,7 @@ inputs:
 - AWS_INSTANCE_TYPE: t2.micro
 - RELEASE_NUMBER: none
 - API_BUILD_NUMBER: none
-- iam_instance_profile_name: QUALI_Server
+- iam_instance_profile_name: S3FullAccess
 
 infrastructure:
   connectivity:
