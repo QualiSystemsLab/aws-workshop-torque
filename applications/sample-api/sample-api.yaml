@@ -10,9 +10,16 @@ inputs:
 
 infrastructure:
   connectivity:
-    external:
-      - port_info:
-          port: $API_PORT
+    internal:
+    - port_info:
+        port: 3000
+        ingress-healthcheck:                  
+            healthy-threshold: 5
+            interval: 30
+            path: /
+            status-codes: 200-299
+            timeout: 5
+            unhealthy-threshold: 2
   compute:
     spec:      
       azure:
