@@ -6,7 +6,6 @@ inputs:
 - AWS_INSTANCE_TYPE: t2.micro
 - RELEASE_NUMBER: none
 - API_BUILD_NUMBER: none
-- IAM_ROLE
 
 infrastructure:
   connectivity:
