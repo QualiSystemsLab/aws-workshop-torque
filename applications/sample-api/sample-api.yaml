@@ -1,7 +1,8 @@
 spec_version: 1
 kind: application
 inputs:
-- API_PORT: 3001
+- PORT: 3000
+- API_PORT: 30001
 - AZURE_VM_SIZE: Basic_A1
 - AWS_INSTANCE_TYPE: t2.micro
 - RELEASE_NUMBER: none
@@ -11,7 +12,7 @@ infrastructure:
   connectivity:
     internal:
     - port_info:
-        port: $API_PORT
+        port: $PORT
         ingress-healthcheck:                  
             healthy-threshold: 5
             interval: 30
@@ -32,7 +33,7 @@ configuration:
   initialization:
     script: sample-api.sh
   healthcheck:
-    wait_for_ports: ALL
+    wait_for_ports: $PORT
     timeout: 360
 
 source:
