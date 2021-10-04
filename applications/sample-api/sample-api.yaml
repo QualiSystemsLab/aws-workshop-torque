@@ -7,8 +7,7 @@ inputs:
 - AWS_INSTANCE_TYPE: t2.micro
 - RELEASE_NUMBER: none
 - API_BUILD_NUMBER: none
-- iam_instance_profile_name: i-055a04984694a5ad3
-
+- iam_instance_profile_name: ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20210430
 infrastructure:
   connectivity:
     internal:
