@@ -11,7 +11,7 @@ infrastructure:
   connectivity:
     internal:
     - port_info:
-        port: 3000
+        port: $API_PORT
         ingress-healthcheck:                  
             healthy-threshold: 5
             interval: 30
