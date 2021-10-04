@@ -26,6 +26,7 @@ configuration:
     script: sample-api.sh
   healthcheck:
     timeout: 1000
+    wait_for_ports: $API_PORT
 
 source:
   image:
