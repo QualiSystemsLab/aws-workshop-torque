@@ -6,6 +6,7 @@ inputs:
 - AWS_INSTANCE_TYPE: t2.micro
 - RELEASE_NUMBER: none
 - API_BUILD_NUMBER: none
+- IAM_ROLE
 
 infrastructure:
   connectivity:
@@ -18,6 +19,9 @@ infrastructure:
         vm_size: $AZURE_VM_SIZE
       aws:
         instance_type: $AWS_INSTANCE_TYPE
+  permissions:
+      aws:
+        iam_instance_profile: $IAM_ROLE
         
 configuration:
   start:
