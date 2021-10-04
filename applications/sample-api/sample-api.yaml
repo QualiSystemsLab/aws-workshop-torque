@@ -25,8 +25,8 @@ configuration:
   initialization:
     script: sample-api.sh
   healthcheck:
-    timeout: 1000
-    wait_for_ports: $API_PORT
+    wait_for_ports: ALL
+    timeout: 360
 
 source:
   image:
@@ -34,7 +34,7 @@ source:
     - name: ubuntu
       tag: 18.04
     ami:
-      - id: ami-09e67e426f25ce0d7
+      - id: ami-0747bdcabd34c712a
         region: us-east-1
         username: ubuntu
   os_type: linux
