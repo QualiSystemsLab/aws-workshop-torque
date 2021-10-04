@@ -7,6 +7,7 @@ inputs:
 - AWS_INSTANCE_TYPE: t2.micro
 - RELEASE_NUMBER: none
 - API_BUILD_NUMBER: none
+- iam_instance_profile_name: S3FullAccess
 
 infrastructure:
   connectivity:
@@ -26,7 +27,10 @@ infrastructure:
         vm_size: $AZURE_VM_SIZE
       aws:
         instance_type: $AWS_INSTANCE_TYPE
-        
+  permissions:
+    aws:
+      iam_instance_profile: $iam_instance_profile_name
+
 configuration:
   start:
     script: sample-api-command.sh
