@@ -16,13 +16,13 @@ apt-get update -y
 echo "****************************************************************"
 echo "Installing python"
 echo "****************************************************************"
-sudo apt install software-properties-common
+sudo apt install -y software-properties-common
 sudo add-apt-repository ppa:deadsnakes/ppa
-sudo apt update
-sudo apt install python3.8
-sudo apt install python3-pip
+sudo apt update -y
+sudo apt install -y python3.8
+sudo apt install -y python3-pip
 echo python --version
-sudo dnf install python3
+sudo dnf install -y python3
 echo python --version
 
 # sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget
@@ -38,7 +38,7 @@ echo python --version
 echo "****************************************************************"
 echo "Installing Nginx"
 echo "****************************************************************"
-sudo apt update
+sudo apt update -y
 sudo apt install -y nginx
 sudo service nginx start
 
