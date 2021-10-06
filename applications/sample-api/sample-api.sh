@@ -104,3 +104,9 @@ echo 'API_PORT='$API_PORT >> /etc/environment
 source /etc/environment
 
 echo "********************Initialization finished*********************"
+
+
+echo '******Start our api/script**************************'
+cd var/sample-api/
+python sample-api-0.0.1/src/example/sample-api.py
+echo '******End our api ***********************************'
