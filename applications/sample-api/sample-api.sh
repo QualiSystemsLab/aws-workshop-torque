@@ -79,16 +79,16 @@ echo '==> Extract api artifact to /var/sample-api'
 echo "****************************************************************"
 echo $ARTIFACTS_PATH
 
-mkdir $ARTIFACTS_PATH/drop
-# tar -xvf $ARTIFACTS_PATH/sample-api.*.tar.gz -C $ARTIFACTS_PATH/drop/
+mkdir $ARTIFACTS_PATH
+# tar -xvf $ARTIFACTS_PATH/sample-api.*.tar.gz -C $ARTIFACTS_PATH/
 
-tar -xvf $ARTIFACTS_PATH/sample-api-0.0.1.tar.gz -C $ARTIFACTS_PATH/drop/
-# tar -xvf $ARTIFACTS_PATH/sample_api-*.* -C $ARTIFACTS_PATH/drop/
+tar -xvf $ARTIFACTS_PATH/sample-api-0.0.1.tar.gz -C $ARTIFACTS_PATH/
+# tar -xvf $ARTIFACTS_PATH/sample_api-*.* -C $ARTIFACTS_PATH/
 
 mkdir /var/sample-api/
 
 # tar -xvf $ARTIFACTS_PATH/drop/drop/sample-api.*.tar.gz -C /var/sample-api
-tar -xvf $ARTIFACTS_PATH/drop/drop/sample-api-0.0.1.tar.gz -C /var/sample-api
+tar -xvf $ARTIFACTS_PATH/sample-api-0.0.1.tar.gz -C /var/sample-api
 # tar -xvf $ARTIFACTS_PATH/drop/drop/sample_api-*.* -C /var/sample-api
 
 echo 'RELEASE_NUMBER='$RELEASE_NUMBER >> /etc/environment
