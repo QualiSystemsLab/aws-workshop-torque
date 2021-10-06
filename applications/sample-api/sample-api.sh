@@ -82,10 +82,13 @@ echo $ARTIFACTS_PATH
 mkdir $ARTIFACTS_PATH/drop
 tar -xvf $ARTIFACTS_PATH/sample-api-0.0.1.tar.gz -C $ARTIFACTS_PATH/drop/
 
+echo "*********************artifacts copied to root**********************************"
 mkdir /var/sample-api/
 
+echo $ARTIFACTS_PATH
+
 # tar -xvf $ARTIFACTS_PATH/drop/drop/sample-api.*.tar.gz -C /var/sample-api
-tar -xvf $ARTIFACTS_PATH/drop/sample-api-*.gz -C /var/sample-api
+tar -xvf $ARTIFACTS_PATH/sample-api-*.gz -C /var/sample-api
 # tar -xvf $ARTIFACTS_PATH/drop/drop/sample_api-*.* -C /var/sample-api
 
 echo 'RELEASE_NUMBER='$RELEASE_NUMBER >> /etc/environment
