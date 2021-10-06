@@ -92,7 +92,7 @@ mkdir /var/sample-api/
 
 # tar -xvf $ARTIFACTS_PATH/drop/sample-api-* -C /var/sample-api
 
-echo "**********************untar & scp **************"
+echo "**********************copy(scp) to certain folder**************"
 # tar -xzvf latest.tar.gz
 rsync -av $ARTIFACTS_PATH/drop/sample-api-* /var/sample-api/
 
@@ -108,7 +108,7 @@ echo "********************Initialization finished*********************"
 
 echo '******Start our api/script**************************'
 echo python3 --version
-echo *
+python3 --version
 
 # python3 sample-api.py
 python3 /var/sample-api/sample-api-0.0.1/src/example/sample-api.py
