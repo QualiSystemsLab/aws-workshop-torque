@@ -90,9 +90,11 @@ echo $ARTIFACTS_PATH
 echo "*********************artifacts copied to root**********************************"
 mkdir /var/sample-api/
 
-# tar -xvf $ARTIFACTS_PATH/drop/drop/sample-api-* -C /var/sample-api
+# tar -xvf $ARTIFACTS_PATH/drop/sample-api-* -C /var/sample-api
 
-tar -xvf $ARTIFACTS_PATH/drop/sample-api-* -C /var/sample-api
+echo "**********************untar & scp **************"
+# tar -xzvf latest.tar.gz
+rsync -av $ARTIFACTS_PATH/drop/sample-api-* /var/sample-api/
 
 echo "*********************artifacts copied to root**********************************"
 
