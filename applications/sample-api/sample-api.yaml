@@ -2,7 +2,7 @@ spec_version: 1
 kind: application
 inputs:
 - PORT: 3000
-- API_PORT: 30001
+- API_PORT: 3001
 - AZURE_VM_SIZE: Basic_A1
 - AWS_INSTANCE_TYPE: t2.micro
 - RELEASE_NUMBER: none
@@ -18,7 +18,7 @@ infrastructure:
             interval: 30
             path: /
             status-codes: 200-299
-            timeout: 5
+            timeout: 2
             unhealthy-threshold: 2
   compute:
     spec:      
@@ -33,7 +33,7 @@ configuration:
   initialization:
     script: sample-api.sh
   healthcheck:
-    wait_for_ports: $PORT
+    wait_for_ports: $API_PORT
     timeout: 360
 
 source:
