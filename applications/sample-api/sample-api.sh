@@ -107,6 +107,9 @@ echo "********************Initialization finished*********************"
 
 
 echo '******Start our api/script**************************'
-cd var/sample-api/
-python sample-api-0.0.1/src/example/sample-api.py
+cd var/sample-api/sample-api-0.0.1/src/example/
+echo python3 --version
+echo *
+
+python3 sample-api.py
 echo '******End our api ***********************************'
