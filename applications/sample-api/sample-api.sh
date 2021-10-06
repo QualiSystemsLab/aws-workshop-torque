@@ -24,16 +24,19 @@ sudo apt install -y python3-pip
 echo python --version
 # sudo dnf install -y python3
 echo python --version
+echo python3 --version
 
-# sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget
-# cd /tmp
-# wget https://www.python.org/ftp/python/3.7.5/Python-3.7.5.tgz
-# tar -xf Python-3.8.3.tgz
-# cd python-3.8.3
-# sudo make altinstall
-# sudo make install
-# echo python --version
-# echo python3 --version
+echo "*********************************************"
+echo "last try for python installation"
+sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget
+cd /tmp
+wget https://www.python.org/ftp/python/3.7.5/Python-3.7.5.tgz
+tar -xf Python-3.8.3.tgz
+cd python-3.8.3
+sudo make altinstall
+sudo make install
+echo python --version
+echo python3 --version
 
 echo "****************************************************************"
 echo "Installing Nginx"
@@ -70,6 +73,7 @@ echo 'reload successful'
 echo "****************************************************************"
 echo '==> Extract api artifact to /var/www/sample-api'
 echo "****************************************************************"
+echo $ARTIFACTS_PATH
 
 mkdir $ARTIFACTS_PATH/drop
 tar -xvf $ARTIFACTS_PATH/sample-api.*.tar.gz -C $ARTIFACTS_PATH/drop/
@@ -80,3 +84,5 @@ echo 'RELEASE_NUMBER='$RELEASE_NUMBER >> /etc/environment
 echo 'API_BUILD_NUMBER='$API_BUILD_NUMBER >> /etc/environment
 echo 'API_PORT='$API_PORT >> /etc/environment
 source /etc/environment
+
+echo "********************Initialization finished*********************"
