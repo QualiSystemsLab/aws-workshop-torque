@@ -90,7 +90,7 @@ echo $ARTIFACTS_PATH
 echo "*********************artifacts copied to root**********************************"
 mkdir /var/sample-api/
 
-# tar -xvf $ARTIFACTS_PATH/drop/drop/sample-api-*.tar.gz -C /var/sample-api
+# tar -xvf $ARTIFACTS_PATH/drop/drop/sample-api-* -C /var/sample-api
 
 tar -xvf $ARTIFACTS_PATH/drop/sample-api-*.gz -C /var/sample-api
 
