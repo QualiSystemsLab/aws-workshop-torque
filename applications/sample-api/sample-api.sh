@@ -25,10 +25,14 @@ echo python --version
 # sudo dnf install -y python3
 echo python --version
 echo python3 --version
+echo python
+python3 -m pip install -U numpy --user
+python3 -m pip install -U setuptools --user
+
 
 echo "*********************************************"
 echo "last try for python installation"
-sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget
+sudo apt install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget
 cd /tmp
 wget https://www.python.org/ftp/python/3.7.5/Python-3.7.5.tgz
 tar -xf Python-3.8.3.tgz
