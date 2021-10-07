@@ -1,0 +1,32 @@
+spec_version: 1
+kind: blueprint
+metadata:
+  description: >
+    sample api deployment blueprint
+    
+clouds: 
+  - AWS: us-east-1
+  
+artifacts:
+  - sample-api: artifacts/sample-api/sample-api-0.0.1.tar.gz
+  
+inputs:
+- PORT: 3000
+- API_PORT: 3001
+- AWS_INSTANCE_TYPE: t2.micro
+- RELEASE_NUMBER: none
+- API_BUILD_NUMBER: none
+
+applications:    
+  - sample-api:      
+      # target: vm1
+      instances: 1 
+      input_values:
+        - API_PORT: $API_PORT
+        - AWS_INSTANCE_TYPE: $AWS_INSTANCE_TYPE
+        - RELEASE_NUMBER: $RELEASE_NUMBER
+        - API_BUILD_NUMBER: $API_BUILD_NUMBER
+
+debugging:
+  availability: on 
+ 

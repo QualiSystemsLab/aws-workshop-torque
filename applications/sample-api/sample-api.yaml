@@ -1,0 +1,52 @@
+spec_version: 1
+kind: application
+inputs:
+- PORT: 3000
+- API_PORT: 3001
+- AZURE_VM_SIZE: Basic_A1
+- AWS_INSTANCE_TYPE: t2.micro
+- RELEASE_NUMBER: none
+- API_BUILD_NUMBER: none
+
+infrastructure:
+  connectivity:
+    internal:
+    - port_info:
+        port: $PORT
+        ingress-healthcheck:                  
+            healthy-threshold: 5
+            interval: 30
+            path: /
+            status-codes: 200-299
+            timeout: 2
+            unhealthy-threshold: 2
+  compute:
+    spec:      
+      azure:
+        vm_size: $AZURE_VM_SIZE
+      aws:
+        instance_type: $AWS_INSTANCE_TYPE
+
+configuration:
+  start:
+    script: sample-api-command.sh
+  initialization:
+    script: sample-api.sh
+  healthcheck:
+    wait_for_ports: $API_PORT
+    timeout: 360
+
+source:
+  image:
+    docker_image:
+    - name: ubuntu
+      tag: 18.04
+    ami:
+      - id: ami-09e67e426f25ce0d7
+        region: us-east-1
+        username: ubuntu
+  os_type: linux
+
+debugging: 
+  connection_protocol: SSH
+ 

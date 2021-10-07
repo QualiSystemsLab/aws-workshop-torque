@@ -1,0 +1,69 @@
+#
+# This application file defines how to deploy and configure a MySQL server
+#
+---
+spec_version: 1
+kind: application
+
+# These inputs are used by the initialization script to set up
+# a database administrator account
+inputs:
+  - DB_USER
+  - DB_PASS
+  - DB_NAME
+
+# This section defines the infrastructure requirements for the application
+infrastructure:
+  # Specify the compute requirement for this app
+  # if we don't specify anything the default will be used
+  compute:
+    spec:
+      aws:
+        instance_type: t2.medium
+      azure:
+        vm_size: Basic_A2
+  connectivity:
+    # Port 3306 will be opened internally to receive database requests
+    internal:
+      - port_info:
+          port: 3306
+
+source:
+  os_type: linux
+  image:
+    # This is a clean Ubuntu server image that will
+    # be used to create a new EC2 instance in the defined
+    # AWS region
+    ami:
+      - id: ami-03ef731cc103c9f09
+        region: us-east-1
+        username: ubuntu
+    azure_image:
+      - urn: Canonical:UbuntuServer:16.04-LTS:latest
+        username: adminuser
+    docker_image:
+      - tag: 16.04
+        name: ubuntu
+
+configuration:
+  # The initialization script is intended to install
+  # app prerequisite and initialize the OS
+  # This script installs mysql on a clean Ubuntu OS,
+  # sets up a root account and creates an empty database
+  # for the application
+  initialization:
+    script: mysql.sh
+  # This script restarts the mysql.service process after
+  # the initialization completes
+  # The start script contains the commands
+  # needed to start the application process
+  start:
+    script: mysql-start.sh
+  # To validate the installation, we wait to see that
+  # the ports are available
+  healthcheck:
+    wait_for_ports: ALL
+    timeout: 300
+
+debugging:
+  connection_protocol: SSH
