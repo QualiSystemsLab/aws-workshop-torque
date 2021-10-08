@@ -22,11 +22,8 @@ sudo add-apt-repository ppa:deadsnakes/ppa
 sudo apt update -y
 sudo apt install -y python3.8
 sudo apt install -y python3-pip
-echo python --version
-# sudo dnf install -y python3
-echo python --version
 echo python3 --version
-echo python
+
 python3 -m pip install -U numpy --user
 python3 -m pip install -U setuptools --user
 python3 -m pip install -U Flask --user
@@ -55,6 +52,7 @@ cat << EOF > default
 server {
     listen        3001;
     server_name   *.com;
+    # root /var/www/sample-api;
     location / {
         proxy_pass         http://localhost:5000;
         proxy_http_version 1.1;
@@ -106,25 +104,25 @@ source /etc/environment
 echo "********************Initialization finished*********************"
 
 
-echo '******Start our api/script**************************'
+echo '******Start api/script**************************'
 echo python3 --version
 python3 --version
 
 # python3 sample-api.py
 python3 /var/sample-api/sample-api-0.0.1/src/example/sample-api.py
-echo '******End our api ***********************************'
+echo '******End api/Script ***********************************'
 
-echo '==> Installing NPM and PM2'
-apt-get update
-apt install curl -y
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh | bash
-nvm --version
+# echo '==> Installing NPM and PM2'
+# apt-get update
+# apt install curl -y
+# curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh | bash
+# nvm --version
 
-npm install -g pm2
+# npm install -g pm2
 
-echo '==> Start our api and configure as a daemon using pm2'
-pm2 start /var/sample-api/sample-api-0.0.1/src/example/sample-api.py
-pm2 save
-chattr +i /root/.pm2/dump.pm2
+# echo '==> Start our api and configure as a daemon using pm2'
+# pm2 start /var/sample-api/sample-api-0.0.1/src/example/sample-api.py
+# pm2 save
+# chattr +i /root/.pm2/dump.pm2
 
-echo '==> END our api and configure as a daemon using pm2'
+# echo '==> END our api and configure as a daemon using pm2'
