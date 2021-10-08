@@ -117,12 +117,12 @@ echo '******End our api ***********************************'
 echo '==> Installing NPM and PM2'
 apt-get update
 apt install curl -y
-curl -sL https://deb.nodesource.com/setup_10.x | bash -
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh | bash
+nvm --version
 
 npm install -g pm2
 
 echo '==> Start our api and configure as a daemon using pm2'
-cd /var/promotions-manager-api
 pm2 start /var/sample-api/sample-api-0.0.1/src/example/sample-api.py
 pm2 save
 chattr +i /root/.pm2/dump.pm2
