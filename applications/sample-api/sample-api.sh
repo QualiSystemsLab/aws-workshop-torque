@@ -113,3 +113,14 @@ python3 --version
 # python3 sample-api.py
 python3 /var/sample-api/sample-api-0.0.1/src/example/sample-api.py
 echo '******End our api ***********************************'
+
+echo '==> Installing NPM and PM2'
+npm install -g pm2
+
+echo '==> Start our api and configure as a daemon using pm2'
+cd /var/promotions-manager-api
+pm2 start /var/sample-api/sample-api-0.0.1/src/example/sample-api.py
+pm2 save
+chattr +i /root/.pm2/dump.pm2
+
+echo '==> END our api and configure as a daemon using pm2'
