@@ -115,6 +115,10 @@ python3 /var/sample-api/sample-api-0.0.1/src/example/sample-api.py
 echo '******End our api ***********************************'
 
 echo '==> Installing NPM and PM2'
+apt-get update
+apt install curl -y
+curl -sL https://deb.nodesource.com/setup_10.x | bash -
+
 npm install -g pm2
 
 echo '==> Start our api and configure as a daemon using pm2'
